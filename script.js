@@ -50,7 +50,24 @@ function isInvalidInput(str) {
 }
 
 //test the checking invalid input function 
-console.log(isInvalidInput("1e3")); // result = [ '1e3', index: 0, input: '1e3', groups: undefined ]
+console.log(isInvalidInput("1e3")); // result = [ '1e3', index: 0, input: '1e3', groups: undefined ] -> The match method returns an array with any matches found in the string.
+console.log(isInvalidInput("10")); //null in JavaScript is a special primitive that represents the intentional absence of a value. In a boolean context, null is considered falsy which evaluates to false in a conditional statement.
+
+function addEntry() {
+  //const targetId = "#" + entryDropdown.value; //this will contain the id of selected dropdown target for example #breakfast
+  
+
+  //1
+  //const targetInputContainer = document.querySelector(targetId + ' .input-container');  //this will create am imitation that works as css selector for example #breakfast .input-container
+
+  //2
+  //const targetInputContainer = document.querySelector(`${targetId} .input-container`);
+
+  //3
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll();
+}
+
 
 
 

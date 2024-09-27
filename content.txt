@@ -4,3 +4,14 @@ what we learn:
 - regex
 - string .replace method
 - string .match method
+- Advance DOM Manipulation
+  > example:
+  function addEntry() {
+  const targetId = "#" + entryDropdown.value;
+  const targetInputContainer = document.querySelector(targetId + ' .input-container'); //this will create an imitation that works as css selector for example #breakfast .input-container
+}
+- template literals
+  > ex: const targetInputContainer = document.querySelector(`${targetId} .input-container`);
+- querySelectorAll
+  > The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+-
