@@ -1,0 +1,6 @@
+what we learn:
+
+- getElementById
+- regex
+- string .replace method
+- string .match method
