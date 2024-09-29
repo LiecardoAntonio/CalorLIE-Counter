@@ -65,14 +65,23 @@ function addEntry() {
 
   //3
   const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
-  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length+1;
   
   const HTMLString = `
   <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
   <input type="text" id="${entryDropdown.value}-${entryNumber}-name" placeholder="Name" />
   <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
   <input type="number" min="0" placeholder="Calories" id="${entryDropdown.value}-${entryNumber}-calories" >`; //store literals sting of a HTML element (Label and Input).
+
+  //1
+  //targetInputContainer.innerHTML += HTMLString; //concat the HTML string to targetInputContainer
+  //Your other bug occurs if you add a Breakfast entry, fill it in, then add a second Breakfast entry. You'll see that the values you added disappeared. This is because you are updating innerHTML directly, which does not preserve your input content. Change your innerHTML assignment to use the insertAdjacentHTML() method of targetInputContainer instead. Do not pass any arguments yet.
+
+  //2
+  targetInputContainer.insertAdjacentHTML();
 }
+
+addEntryButton.addEventListener('click', addEntry);
 
 
 
