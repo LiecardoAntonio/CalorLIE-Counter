@@ -1,18 +1,33 @@
 what we learn:
 
 - getElementById
+
 - regex
+
 - string .replace method
+
 - string .match method
+
 - Advance DOM Manipulation
   > example:
   function addEntry() {
   const targetId = "#" + entryDropdown.value;
   const targetInputContainer = document.querySelector(targetId + ' .input-container'); //this will create an imitation that works as css selector for example #breakfast .input-container
 }
+
 - template literals string
   > ex: const targetInputContainer = document.querySelector(`${targetId} .input-container`);
+
 - querySelectorAll
   > The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+
 - addEventListener(event, behavior)
-- insertAdjacentHTML()
+
+- insertAdjacentHTML(position, itemToInsert)
+
+- Number(string)
+
+- e.preventDefault()
+  > You will be attaching this function to the submit event of the form. The submit event is triggered when the form is submitted. The default action of the submit event is to reload the page. You need to prevent this default action using the preventDefault() method of your e parameter.
+
+-

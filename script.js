@@ -78,9 +78,53 @@ function addEntry() {
   //Your other bug occurs if you add a Breakfast entry, fill it in, then add a second Breakfast entry. You'll see that the values you added disappeared. This is because you are updating innerHTML directly, which does not preserve your input content. Change your innerHTML assignment to use the insertAdjacentHTML() method of targetInputContainer instead. Do not pass any arguments yet.
 
   //2
-  targetInputContainer.insertAdjacentHTML();
+  targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
 
+function calculateCalories(e) {
+  //e stands for event, bcoz this function is a eventListener function
+  e.preventDefault(); //this will prevent an event to do what it's meant to do, like submit button will reload page when clicked, and checkbox will check the box if clicked, check more default action of an event.
+  isError = false;
+
+  const breakfastNumberInputs = document.querySelectorAll('#breakfast input[type="number"]'); //will store all breakfast entries inputs.
+  const lunchNumberInputs = document.querySelectorAll("#lunch input[type='number']");
+  const dinnerNumberInputs = document.querySelectorAll("#dinner input[type='number']");
+  const snacksNumberInputs = document.querySelectorAll("#snacks input[type='number']");
+  const exerciseNumberInputs = document.querySelectorAll("#exercise input[type='number']");
+
+  //calculate the calories
+  const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
+  const lunchCalories = getCaloriesFromInputs(lunchNumberInputs);
+  const dinnerCalories = getCaloriesFromInputs(dinnerNumberInputs); 
+  const snacksCalories = getCaloriesFromInputs(snacksNumberInputs);
+  const exerciseCalories = getCaloriesFromInputs(exerciseNumberInputs);
+
+  const budgetCalories = getCaloriesFromInputs([budgetNumberInput]); //basically bcoz the function use an array or nodelist to work, we need to make the budgetNumberInput treated as an array by placing it on array []
+  //You also need to get the value of your #budget input. You already queried this at the top of your code, and set it to the budgetNumberInput variable. However, you used getElementById, which returns an Element, not a NodeList. A NodeList is an array-like object, which means you can iterate through it and it shares some common methods with an array. For your getCaloriesFromInputs function, an array will work for the argument just as well as a NodeList does. Declare a budgetCalories variable and set it to the result of calling getCaloriesFromInputs – pass an array containing your budgetNumberInput as the argument.
+
+  if(isError) {
+    //because if the getCaloriesFromInputs has a wrong input, it will set isError to true
+    return;
+  }
+}
+
+function getCaloriesFromInputs(list) {
+  let calories = 0;
+  for(const item of list) {
+    //The NodeList values you will pass to list will consist of input elements. So you will want to look at the value attribute of each element.
+    const currVal = cleanInputString(item.value);  //cleaning the input
+    const invalidInputMatch = isInvalidInput(currVal); //cleaning & storing invalid input
+    if(invalidInputMatch) {
+      alert(`Invalid Input: ${invalidInputMatch[0]}`); //tell the user there is invalid input using alert
+      isError = true;
+      return null;
+    }
+    calories += Number(currVal); //curval is in string format so we need to make it Number
+  }
+  return calories;
+}
+
+//apply function
 addEntryButton.addEventListener('click', addEntry);
 
 
