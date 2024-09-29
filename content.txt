@@ -30,4 +30,27 @@ what we learn:
 - e.preventDefault()
   > You will be attaching this function to the submit event of the form. The submit event is triggered when the form is submitted. The default action of the submit event is to reload the page. You need to prevent this default action using the preventDefault() method of your e parameter.
 
--
+- string.toLowerCase()
+
+- Math.abs(number)
+
+- HTMLElement.classList.method("class_name")
+  > ClassList is a property that every HTML element has
+  > method of classList e.g remove() which remove the class from the element
+  > method of classList e.g add() which add a class for the element
+
+- Array.from(HTMLElement)
+  > Array object has a .from() method that accepts an array-like and returns an array. This is helpful when you want access to more robust array methods, which you will learn about in a future project.
+
+  > usage example:
+  //html
+  <ul>
+    <li>List 1</li>
+    <li>List 2</li>
+    <li>List 3</li>
+  </ul>
+  //JavaScript
+  const listItemsArray = Array.from(document.querySelectorAll('li'));
+  console.log(listItemsArray); //Output: (3) [li, li, li]
+
+- NOTE: The difference between innerText and innerHTML is that innerText will not render HTML elements, but will display the tags and content as raw text.

@@ -106,6 +106,25 @@ function calculateCalories(e) {
     //because if the getCaloriesFromInputs has a wrong input, it will set isError to true
     return;
   }
+
+  //calculation starts
+  const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories  + snacksCalories;
+  const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
+  const surplusOrDeficit = remainingCalories < 0 ?  "Surplus": "Deficit";
+
+  //showing output
+  output.innerHTML = `
+  <span class="${surplusOrDeficit.toLowerCase()}">${remainingCalories} Calorie ${surplusOrDeficit}</span>
+  <hr>
+  <p>${budgetCalories} Calories Budgeted</p>
+  <p>${consumedCalories} Calories Consumed</p>
+  <p>${exerciseCalories} Calories Burned</p>
+  `;
+
+  //removing the hide class from the #output element
+  output.classList.remove("hide"); 
+  //before : <div id="output" class="output hide"></div>
+  //after : <div id="output" class="output"></div>
 }
 
 function getCaloriesFromInputs(list) {
@@ -124,9 +143,23 @@ function getCaloriesFromInputs(list) {
   return calories;
 }
 
+function clearForm() {
+  const inputContainers = Array.from(document.querySelectorAll('.input-container')); //this will return an array of [input-container, input-container, ...] depends on how many input-container u have
+  console.log(inputContainers);
+
+  for(const container of inputContainers) {
+    container.innerHTML = "";
+  }
+
+  budgetNumberInput.value=""; //reset budget count
+  output.innerText = ""; //reset output text
+  output.classList.add('hide');
+}
+
 //apply function
 addEntryButton.addEventListener('click', addEntry);
-
+calorieCounter.addEventListener('submit', calculateCalories);
+clearButton.addEventListener('click', clearForm);
 
 
 
